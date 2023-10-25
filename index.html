@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Pokémon</h1>
+    <div id="toolbar" class="toolbar">
+    <label for="typeFilter">Seleziona il tipo:</label>
+    <select id="typeFilter">
+        <option value="all">Tutti</option>
+        <option value="normal">Normale</option>
+        <option value="fire">Fuoco</option>
+        <option value="water">Acqua</option>
+        <option value="grass">Erba</option>
+        <option value="electric">Elettro</option>
+        <option value="ice">Ghiaccio</option>
+        <option value="fighting">Lotta</option>
+        <option value="poison">Veleno</option>
+        <option value="ground">Terra</option>
+        <option value="flying">Volante</option>
+        <option value="psychic">Psico</option>
+        <option value="bug">Coleottero</option>
+        <option value="rock">Roccia</option>
+        <option value="ghost">Spettro</option>
+        <option value="dark">Buio</option>
+        <option value="dragon">Drago</option>
+        <option value="steel">Acciaio</option>
+        <option value="fairy">Folletto</option>
+    </select>
+    <button id="filterButton">Filtra</button>
+</div>
+    <div id="pokemonContainer" class="pokemonContainer"></div>
+
+    <script>
+        const pokemonContainer = document.getElementById("pokemonContainer");
+        const typeFilter = document.getElementById("typeFilter");
+        const filterButton = document.getElementById("filterButton");
+
+        filterButton.addEventListener("click", filterPokemon);
+
+        fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+            .then(response => response.json())
+            .then(data => {
+                const results = data.results;
+
+                results.forEach(pokemon => {
+                    fetchPokemonDetails(pokemon.url);
+                });
+            })
+            .catch(error => console.error('Errore nella richiesta:', error));
+
+        function fetchPokemonDetails(url) {
+            fetch(url)
+                .then(response => response.json())
+                .then(pokemonData => {
+                    const pokemonCard = document.createElement('div');
+                    pokemonCard.className = 'pokemon-card';
+
+                    let pokeName = document.createElement('h4');
+                    let pokeType = document.createElement('p');
+                    pokeType.className = "pokemon-type";
+                    let pokeDescription = document.createElement('p');
+                    let pokeImg = document.createElement('img');
+                    pokeImg.className = "pokemon-image";
+
+                    pokeName.innerHTML = `${pokemonData.name} (#${pokemonData.id})<br>`;
+                    pokeType.innerHTML = `Tipo:${pokemonData.types.map(type => type.type.name).join(', ')}</span><br>`;
+
+                    pokeDescription.innerHTML = `Altezza: ${pokemonData.height / 10}m<br> Peso: ${pokemonData.weight / 10}kg<br>`;
+                    pokeImg.src = pokemonData.sprites.front_default;
+
+                    pokemonCard.appendChild(pokeName);
+                    pokemonCard.appendChild(pokeImg);
+                    pokemonCard.appendChild(pokeType);
+                    pokemonCard.appendChild(pokeDescription);
+                    pokemonContainer.appendChild(pokemonCard);
+                })
+                .catch(error => console.error('Errore nella richiesta di dettagli del Pokémon:', error));
+        }
+
+        function filterPokemon() {
+            const selectedType = typeFilter.value;
+            const pokemonCards = document.querySelectorAll(".pokemon-card");
+
+            pokemonCards.forEach(pokemonCard => {
+                const typeElement = pokemonCard.querySelector(".pokemon-type");
+                const typeName = typeElement.textContent.toLowerCase();
+
+                if (selectedType === "all" || typeName.includes(selectedType)) {
+                    pokemonCard.style.display = "block";
+                } else {
+                    pokemonCard.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
