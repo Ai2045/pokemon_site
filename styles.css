@@ -1,0 +1,322 @@
+/* Stile per il corpo della pagina */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+/* Stile per l'intestazione */
+h1 {
+    color: #0077C0;
+}
+
+.pokemon-logo {
+    width: 19%;
+    margin: 5px 39%;
+    display: block;
+}
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.toolbar a {
+    text-decoration: none;
+    font-size: 15px;
+    background-color: #FF3030;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Stile per il pulsante "Reset Pokémon" */
+#reset {
+    background-color: #FF3030;
+    font-size: 15px;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#return-button{
+    background-color: #FF3030;
+    font-size: 15px;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#pokemon-num{
+    font-size: 25px;
+    font-weight: bold;
+    color: #FF3030;
+}
+#introduzione {
+    float: left;
+    margin: 10px;
+    margin-top: 5%;
+    
+}
+
+#introduzione p{
+    float: left;
+    margin: 10px;
+    width: 200px;
+    margin-top: 10%;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#introduzione p:hover{
+    padding:10px;
+}
+.professore-img{
+    float: left;
+    width: 300px;
+    margin: 0 auto;
+    display: block;
+}
+
+#pokeball{
+    position: relative;
+    float: left;
+    margin-left: 35%;
+    margin-top: 12%;
+    display: block;
+}
+.pokeball-img{
+    width: 150px;
+    margin: 0 auto;
+    display: block;
+}
+
+
+/*make start-button at the center of pokeball*/
+#start-button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FF3030;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#start-button:hover{
+    scale: 1.1;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Stile per il contenitore dei Pokémon */
+#pokemon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 20%;
+    gap: 80px;
+}
+
+/* Stile per la scheda di ciascun Pokémon */
+.pokemon-card {
+    border: 2px solid #0077C0;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.pokemon-card:hover {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+}
+
+/* Stile per l'immagine del Pokémon */
+.pokemon-image {
+    width: 100px;
+    height: 100px;
+
+}
+
+/* Stile per il nome del Pokémon */
+.pokemon-name {
+    font-weight: bold;
+
+}
+
+/* Stile per il numero del Pokémon */
+.pokemon-id {
+    font-style: italic;
+    color: #888;
+}
+
+/* Stile per il tipo del Pokémon */
+.pokemon-type {
+    display: inline-block;
+    margin: 5px 2px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 14px;
+}
+
+/*make catch button at center of pokemon card*/
+.catch-button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FF3030;
+    color: #fff;
+    border: none;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.catch-button:hover{
+    scale: 1.1;
+    transform: translate(-50%, -50%);
+}
+/* Stile per il popup */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #0077C0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+/* Stile per il pulsante "X" nel popup */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    color: #0077C0;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#catch-chance {
+    position: absolute;
+    top: 50%;
+    left: 85%;
+    display: flex;
+    align-items: center; /* Centra verticalmente il contenuto */
+    padding: 5px 20px; /* Modificato il padding */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+}
+
+.catchball-text {
+    float: left;
+    margin-left: 10px; /* Aggiunto il margine sinistro per separare l'immagine e il testo */
+}
+
+.catchball-img {
+    float: left;
+    max-width: 20px;
+    margin-top: 15px; /* Aggiunto il margine destro per separare l'immagine e il testo */
+}
+/* Aggiungi altri stili personalizzati come desideri. */
+
+#typeFilter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.details-button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    color: #fff;
+    border: none;
+    border-radius: 20%;
+    cursor: pointer;
+}
+.details-button:hover{
+    scale: 1.1;
+    transform: translate(-50%, -50%);
+}
+.delete-button{
+    position: absolute;
+    top: 3%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#filtri{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    gap: 20px;
+}
+
+.filter-button{
+    background-color: #FF3030;
+    color: #fff;
+    border: none;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.filter-button:hover{
+    scale: 1.1;
+    transform: translate(1%, 1%);
+}
+
+#show-pokemon-button{
+    background-color: #FF3030;
+    font-size: 15px;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#my-pokemon-button{
+    background-color: #FF3030;
+    font-size: 15px;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}

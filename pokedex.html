@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Catcher</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assicurati di avere un file CSS collegato per lo stile. -->
+    <link rel="stylesheet" href="color.css">
+</head>
+<body>
+
+    <img class="pokemon-logo" src="pokemon.png" alt="pokemon.png">
+
+    <toolbar class="toolbar">
+        <a href="index.html">ADVENTURE</a>
+        <div id="pokemon-num">MY POKEMON: 0</div>
+        <button id="my-pokemon-button">GET MY POKEMON</button>
+    </toolbar>
+    <div id="filtri">
+        <button class="filter-button" onclick="filterPokemon('all')">ALL</button>
+        <button class="filter-button fire" onclick="filterPokemon('fire')">FIRE</button>
+        <button class="filter-button water" onclick="filterPokemon('water')">WATER</button>
+        <button class="filter-button grass" onclick="filterPokemon('grass')">GRASS</button>
+        <button class="filter-button electric" onclick="filterPokemon('electric')">ELECTRIC</button>
+        <button class="filter-button psychic" onclick="filterPokemon('psychic')">PSYCHIC</button>
+        <button class="filter-button rock" onclick="filterPokemon('rock')">ROCK</button>
+        <button class="filter-button ground" onclick="filterPokemon('ground')">GROUND</button>
+        <button class="filter-button ice" onclick="filterPokemon('ice')">ICE</button>
+        <button class="filter-button ghost" onclick="filterPokemon('ghost')">GHOST</button>
+        <button class="filter-button dragon" onclick="filterPokemon('dragon')">DRAGON</button>
+        <button class="filter-button dark" onclick="filterPokemon('dark')">DARK</button>
+        <button class="filter-button steel" onclick="filterPokemon('steel')">STEEL</button>
+        <button class="filter-button bug" onclick="filterPokemon('bug')">BUG</button>
+        <button class="filter-button fighting" onclick="filterPokemon('fighting')">FIGHTING</button>
+        <button class="filter-button normal" onclick="filterPokemon('normal')">NORMAL</button>
+        <button class="filter-button flying" onclick="filterPokemon('flying')">FLYING</button>
+        <button class="filter-button poison" onclick="filterPokemon('poison')">POISON</button>
+        <button class="filter-button fairy" onclick="filterPokemon('fairy')">FAIRY</button>
+        <button class="filter-button shadow" onclick="filterPokemon('shadow')">SHADOW</button>
+        
+    </div>
+    
+
+    <div id="pokemon-container">
+        <!-- Pokémon casuale verranno aggiunti qui dinamicamente -->
+    </div>
+    
+    
+    <script src="pokedex.js"></script> <!-- Assicurati di avere un file JavaScript collegato. -->
+</body>
+</html>

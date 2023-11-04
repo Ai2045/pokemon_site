@@ -3,100 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Pokémon Catcher</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assicurati di avere un file CSS collegato per lo stile. -->
+    <link rel="stylesheet" href="color.css">
 </head>
 <body>
-    <h1>Pokémon</h1>
-    <div id="toolbar" class="toolbar">
-    <label for="typeFilter">Seleziona il tipo:</label>
-    <select id="typeFilter">
-        <option value="all">Tutti</option>
-        <option value="normal">Normale</option>
-        <option value="fire">Fuoco</option>
-        <option value="water">Acqua</option>
-        <option value="grass">Erba</option>
-        <option value="electric">Elettro</option>
-        <option value="ice">Ghiaccio</option>
-        <option value="fighting">Lotta</option>
-        <option value="poison">Veleno</option>
-        <option value="ground">Terra</option>
-        <option value="flying">Volante</option>
-        <option value="psychic">Psico</option>
-        <option value="bug">Coleottero</option>
-        <option value="rock">Roccia</option>
-        <option value="ghost">Spettro</option>
-        <option value="dark">Buio</option>
-        <option value="dragon">Drago</option>
-        <option value="steel">Acciaio</option>
-        <option value="fairy">Folletto</option>
-    </select>
-    <button id="filterButton">Filtra</button>
-</div>
-    <div id="pokemonContainer" class="pokemonContainer"></div>
 
-    <script>
-        const pokemonContainer = document.getElementById("pokemonContainer");
-        const typeFilter = document.getElementById("typeFilter");
-        const filterButton = document.getElementById("filterButton");
-
-        filterButton.addEventListener("click", filterPokemon);
-
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
-            .then(response => response.json())
-            .then(data => {
-                const results = data.results;
-
-                results.forEach(pokemon => {
-                    fetchPokemonDetails(pokemon.url);
-                });
-            })
-            .catch(error => console.error('Errore nella richiesta:', error));
-
-        function fetchPokemonDetails(url) {
-            fetch(url)
-                .then(response => response.json())
-                .then(pokemonData => {
-                    const pokemonCard = document.createElement('div');
-                    pokemonCard.className = 'pokemon-card';
-
-                    let pokeName = document.createElement('h4');
-                    let pokeType = document.createElement('p');
-                    pokeType.className = "pokemon-type";
-                    let pokeDescription = document.createElement('p');
-                    let pokeImg = document.createElement('img');
-                    pokeImg.className = "pokemon-image";
-
-                    pokeName.innerHTML = `${pokemonData.name} (#${pokemonData.id})<br>`;
-                    pokeType.innerHTML = `Tipo:${pokemonData.types.map(type => type.type.name).join(', ')}</span><br>`;
-
-                    pokeDescription.innerHTML = `Altezza: ${pokemonData.height / 10}m<br> Peso: ${pokemonData.weight / 10}kg<br>`;
-                    pokeImg.src = pokemonData.sprites.front_default;
-
-                    pokemonCard.appendChild(pokeName);
-                    pokemonCard.appendChild(pokeImg);
-                    pokemonCard.appendChild(pokeType);
-                    pokemonCard.appendChild(pokeDescription);
-                    pokemonContainer.appendChild(pokemonCard);
-                })
-                .catch(error => console.error('Errore nella richiesta di dettagli del Pokémon:', error));
-        }
-
-        function filterPokemon() {
-            const selectedType = typeFilter.value;
-            const pokemonCards = document.querySelectorAll(".pokemon-card");
-
-            pokemonCards.forEach(pokemonCard => {
-                const typeElement = pokemonCard.querySelector(".pokemon-type");
-                const typeName = typeElement.textContent.toLowerCase();
-
-                if (selectedType === "all" || typeName.includes(selectedType)) {
-                    pokemonCard.style.display = "block";
-                } else {
-                    pokemonCard.style.display = "none";
-                }
-            });
-        }
-    </script>
+    <img class="pokemon-logo" src="pokemon.png" alt="pokemon.png">
+    <toolbar class="toolbar">
+        <a href="pokebox.html">POKEBOX</a>
+        <div id="pokemon-num">MY POKEMON: 0</div>
+        <button id="reset">RETSET GAME</button>
+        <button id="return-button">RETURN HOME</button>
+    </toolbar>
+    <div>
+        <div id="pokeball">
+            <img class="pokeball-img" src="pokeball.png" alt="Pokeball">
+            <button id="start-button">Start</button>
+        </div>
+    
+        <div id="introduzione">
+            <img id="professore-Oak-img"class="professore-img" src="professore-Oak.png" alt="professore-Oak">
+            <p id="introduzione-testo">Welcome to the world of Pokémon! I am Professor Oak, 
+                your mentor and guide on this incredible journey. Today, you will begin your adventure in the world of Pokémon,
+                 a world full of extraordinary creatures and exciting adventures. What are you waiting for? Start your adventure!</p>
+        </div>
+    </div>
+    
+    
+    <div id="pokemon-container"></div>
+    <div id="catch-chance"> </div>
+    <script src="index.js"></script> <!-- Assicurati di avere un file JavaScript collegato. -->
 </body>
 </html>
